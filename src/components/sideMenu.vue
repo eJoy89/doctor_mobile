@@ -16,7 +16,7 @@
             </div>
 
             <div class="list-wrap" @scroll="handleScroll">
-                <ol v-for="(list, index) in arr" :key="list.list" :index="index" class="list-main-wrap" :ref="'section' + index">
+                <ol v-for="(list, index) in arr" :key="list.list" :index="index" :ref="'section' + index" class="list-main-wrap">
                     <li class="main-list" :style="{ position: 'sticky', top: '0' }">{{ list.list }}</li>
                     <li v-for="(item, i) in list.sub" :key="item" :index="i" style="padding: 8px;">
                         {{ item }}
@@ -32,24 +32,17 @@ export default {
     data() {
         return {
             arr: [
-                { list: '첫번째', sub: ['일번', '이번', '삼번'] },
-                { list: '두번째', sub: ['일번', '이번', '삼번', '사번'] },
-                { list: '세번째', sub: ['일번', '이번', '삼번'] },
-                { list: '네번째', sub: ['일번', '이번', '삼번', '사번', '오번'] },
-                { list: '다섯번째', sub: ['일번', '이번', '삼번'] },
-                { list: '여섯번째', sub: ['일번', '이번', '삼번'] },
-                { list: '일곱번째', sub: ['일번', '이번', '삼번', '사번', '오번'] },
-                { list: '여덟번째', sub: ['일번', '이번', '삼번', '사번', '오번', '육번'] },
-                { list: '아홉번째', sub: ['일번', '이번', '삼번'] },
-                { list: '열번째', sub: ['일번', '이번', '삼번', '사번', '오번'] },
-                { list: '열한번째', sub: ['일번', '이번', '삼번', '사번', '오번', '육번'] },
-                { list: '열두번째', sub: ['일번', '이번', '삼번'] },
-                { list: '열세번째', sub: ['일번', '이번', '삼번', '사번', '오번'] },
-                { list: '열네번째', sub: ['일번', '이번', '삼번', '사번', '오번', '육번'] },
-                { list: '열다섯번째', sub: ['일번', '이번', '삼번'] },
+                { list: '동의서', sub: ['즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: '전자차트', sub: ['즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: '처방', sub: ['처방 조회', '모바일 추가 처방' ,'즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: '경과기록', sub: ['경과기록' ,'즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드','즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: '진료정보', sub: ['진료정보' ,'즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: 'I/O', sub: ['I/O' ,'즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드','즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: '검사결과', sub: ['검사결과' ,'즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드','즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] },
+                { list: 'V/S', sub: ['V/S' ,'즐겨찾기', '전체 동의서 목록', '작성된 동의서', '동의서 업로드'] }
             ],
             selectedIndex: 0,
-            // userClicked: false
+            userClicked: false
         }
     },
     methods: {
@@ -59,9 +52,9 @@ export default {
             const section = this.$refs['section' + index][0];
             section.scrollIntoView({ behavior: 'smooth' });
 
-            // setTimeout(() => {
-            //     this.userClicked = false;
-            // }, 1000);
+            setTimeout(() => {
+                this.userClicked = false;
+            }, 1000);
         },
         handleScroll() {
             if (this.userClicked) return;
@@ -77,7 +70,6 @@ export default {
                     break;
                 }
             }
-
             this.selectedIndex = currentIndex;
         }
     }

@@ -1,18 +1,18 @@
 <template>
   <main class="app-main">
-    <SwiperComponent/>
+    <!-- <SwiperComponent/> -->
     <RouterView />
   </main>
 </template>
 
 <script>
-import SwiperComponent from './components/SwiperComponent.vue'
+// import SwiperComponent from './components/SwiperComponent.vue'
 
 
 export default {
   name: 'App',
   components: {
-    SwiperComponent
+    // SwiperComponent
   },
   mounted() {
     console.log('open')
