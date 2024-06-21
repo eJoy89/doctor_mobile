@@ -1,15 +1,18 @@
 <template>
   <main class="app-main">
+    <SwiperComponent/>
     <RouterView />
   </main>
 </template>
 
 <script>
+import SwiperComponent from './components/SwiperComponent.vue'
+
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld
+    SwiperComponent
   },
   mounted() {
     console.log('open')

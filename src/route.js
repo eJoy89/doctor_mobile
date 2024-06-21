@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
-    { path: '/', name: '', component: () => import('@/components/DragPage.vue') },
+    
+    { path: '/drag', name: '', component: () => import('@/components/DragPage.vue') },
     { path: '/sideMenu', name: '', component: () => import('@/components/sideMenu.vue') },
 ];
 
