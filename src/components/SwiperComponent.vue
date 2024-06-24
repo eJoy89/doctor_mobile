@@ -1,62 +1,66 @@
 <template>
     <div class="swiper-content-container">
-        <div class="swiper-container">
-            <div class="swiper-card">
+        <div class="swiper-container" ref="swiperContainer">
+            <div class="swiper-card" ref="swiperCard1">
                 <div style="display: flex; align-items: center; column-gap: 10px; height: 80%; padding: 15px;">
-                    <div>
+                    <!-- <div>
                         <span>입원</span>
-                    </div>
+                    </div> -->
                     <div style="display: flex; flex-direction: column;">
-                        <div style="display: flex; align-items: center; column-gap: 10px; color: #fff;">
+                        <!-- <div style="display: flex; align-items: center; column-gap: 10px; color: #fff;">
                             <h3>환자이름</h3>
                             <p>12345678</p>
-                        </div>
+                        </div> -->
                         <div style="display: flex; column-gap: 10px; align-items: center;">
-                            <p>남자</p>
+                            <p>내 환자</p>
                             <p>|</p>
-                            <p>24살</p>
+                            <p>상세검색</p>
                             <p>|</p>
-                            <p>3병동</p>
+                            <p>병동검색</p>
                             <p>|</p>
-                            <p>301호</p>
+                            <p>의사검색</p>
                         </div>
                     </div>
                 </div>
-
-                <div style="height: 20%; display: flex; align-items: center; justify-content: center;">-----</div>
+                <!-- <div style="height: 20%; display: flex; align-items: center; justify-content: center;">-----</div> -->
             </div>
-            <div class="swiper-card"></div>
+            <!-- <div class="swiper-card" ref="swiperCard2"></div> -->
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
-}
+    data() {
+        return {
+            isDown: false,
+            startX: 0,
+            scrollLeft: 0,
+            translateX: 0,
+        };
+    },
+    
+};
 </script>
 
 <style lang="scss" scoped>
-h3, p{
-    margin: 0;
-}
 .swiper-content-container {
-    width: 380px;
-    height: calc(100vh - 102px);
-    border: 1px solid black;
-    padding-top: 100px;
+    width: 100%;
+    height: 120px;
     overflow: hidden;
 
     .swiper-container {
-        width: calc(100% - 20px);
-        height: 150px;
-        padding: 0 10px; 
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
         background: lightblue;
         display: flex;
         align-items: center;
         overflow-x: auto;
-        scroll-snap-type: x mandatory; 
+        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        transition: scroll-snap-type 0.5s ease, scroll-behavior 0.5s ease;
 
         &::-webkit-scrollbar {
             display: none;
@@ -67,13 +71,14 @@ h3, p{
             display: flex;
             flex-direction: column;
             flex: 0 0 auto;
-            width: calc(100% - 40px); 
-            height: calc(100% - 40px); 
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
             border-radius: 10px;
             background: rgba(66, 64, 64, 0.377);
-            margin: 0 20px; 
-            scroll-snap-align: center; 
+            margin: 0 20px;
+            scroll-snap-align: center;
             user-select: none;
+            transition: transform 0.5s ease;
         }
     }
 }
