@@ -5,7 +5,7 @@
                 <div style="display: flex; align-items: center; column-gap: 10px; height: 80%; padding: 15px;">
                     <!-- <div>
                         <span>입원</span>
-                    </div> -->
+                    </div> -->  
                     <div style="display: flex; flex-direction: column;">
                         <!-- <div style="display: flex; align-items: center; column-gap: 10px; color: #fff;">
                             <h3>환자이름</h3>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div style="height: 20%; display: flex; align-items: center; justify-content: center;">-----</div> -->
+                <div style="height: 20%; display: flex; align-items: center; justify-content: center;">-----</div>
             </div>
             <div class="swiper-card" ref="swiperCard2"></div>
         </div>
@@ -52,7 +52,7 @@ export default {
     .swiper-container {
         width: 100%;
         height: 100%;
-        padding: 0 10px;
+        padding: 0 40px;
         background: lightblue;
         display: flex;
         align-items: center;
@@ -70,8 +70,8 @@ export default {
             color: #ffff;
             display: flex;
             flex-direction: column;
-            flex: 0 0 auto;
-            width: calc(100% - 40px);
+            flex: 0 0 100%;
+            width: calc(100% - 10px);
             height: calc(100% - 40px);
             border-radius: 10px;
             background: rgba(66, 64, 64, 0.377);

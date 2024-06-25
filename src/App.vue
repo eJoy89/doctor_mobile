@@ -11,12 +11,11 @@
       </section>
       <DocumentList />
 
-      <SideMenu 
+      <!-- <SideMenu 
         style="position: absolute; top: 0; z-index: 9999; transition: .5s;"
         :style="{left: isSideMenu ? '0' : '-350px'}"
         @deactiveSideMenu="deactiveSideMenu"
-      />
-
+      /> -->
     </div>
 
   
@@ -27,7 +26,7 @@
 import DocumentList from './components/DocumentList.vue';
 import HeaderComponent from './components/HeaderComponent.vue'
 import MenuTab from './components/MenuTab.vue'
-import SideMenu from './components/SideMenu.vue';
+// import SideMenu from './components/SideMenu.vue';
 import SwiperComponent from './components/SwiperComponent.vue';
 // import SwiperJs from './components/SwiperJs.vue'
 
@@ -40,7 +39,7 @@ export default {
     HeaderComponent,
     MenuTab,
     DocumentList,
-    SideMenu
+    // SideMenu
   },
   data() {
     return {
@@ -64,6 +63,7 @@ export default {
 <style lang="scss" scoped>
 body{
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -77,7 +77,7 @@ body{
   align-items: center;
   justify-content: center;
   .main-wrap{
-    width: 350px;
+    width: 100%;
     height: 100%;
     flex-direction: column;
     display: flex;
