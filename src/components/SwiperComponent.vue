@@ -11,7 +11,7 @@
                             <h3>환자이름</h3>
                             <p>12345678</p>
                         </div> -->
-                        <div style="display: flex; column-gap: 10px; align-items: center;">
+                        <div style="display: flex; column-gap: 10px; align-items: center; font-size: 12px; color: #000000;">
                             <p>내 환자</p>
                             <p>|</p>
                             <p>상세검색</p>
@@ -24,7 +24,7 @@
                 </div>
                 <!-- <div style="height: 20%; display: flex; align-items: center; justify-content: center;">-----</div> -->
             </div>
-            <!-- <div class="swiper-card" ref="swiperCard2"></div> -->
+            <div class="swiper-card" ref="swiperCard2"></div>
         </div>
     </div>
 </template>

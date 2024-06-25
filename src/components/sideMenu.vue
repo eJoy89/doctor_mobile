@@ -27,9 +27,9 @@
                     {{ list.title }}
                 </h3>
                 <div class="sub-list-wrap">
-                    <li v-for="(item, index) in list.lists" :key="item" :index="index">
+                    <div v-for="(item, index) in list.lists" :key="item" :index="index">
                         {{ item.title }}
-                    </li>
+                    </div>
                 </div>
             </div>
         </section>

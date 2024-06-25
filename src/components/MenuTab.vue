@@ -1,12 +1,12 @@
 <template>
     <nav class="app-nav">
         <div class="nav-wrap">
-            <li v-for="(list, index) in navList" :key="list" :index="index" 
+            <div v-for="(list, index) in navList" :key="list" :index="index" 
                 :class="{['nav-list-wrap']:true, ['nav-list-wrap-active']:index === this.selectedTab}"
                 @click="selectTab(index)"
             >
                 {{ list.name }}
-            </li>
+            </div>
         </div>
     </nav>
 </template>

@@ -55,7 +55,6 @@ export default {
       this.isSideMenu = !data;
     },
     activeSideMenu(data) {
-      console.log(data)
       this.isSideMenu = data;
     }
   }
