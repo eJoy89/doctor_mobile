@@ -2,29 +2,35 @@
     <div class="swiper-content-container">
         <div class="swiper-container" ref="swiperContainer">
             <div class="swiper-card" ref="swiperCard1">
-                <div style="display: flex; align-items: center; column-gap: 10px; height: 80%; padding: 15px;">
-                    <!-- <div>
-                        <span>입원</span>
-                    </div> -->  
-                    <div style="display: flex; flex-direction: column;">
-                        <!-- <div style="display: flex; align-items: center; column-gap: 10px; color: #fff;">
-                            <h3>환자이름</h3>
-                            <p>12345678</p>
-                        </div> -->
-                        <div style="display: flex; column-gap: 10px; align-items: center; font-size: 12px; color: #000000;">
-                            <p>내 환자</p>
-                            <p>|</p>
-                            <p>상세검색</p>
-                            <p>|</p>
-                            <p>병동검색</p>
-                            <p>|</p>
-                            <p>의사검색</p>
+                <section class="swiper-card_top-section">
+                    <div class="patient-status-wrap">
+                        <span class="patient-status">입원</span>
+                    </div>  
+                    <div class="user-info-container">
+                        <div class="user-info">
+                            <h3 class="user-name">{{ userInfo.name }}</h3>
+                            <p class="user-no">{{ userInfo.no }}</p>
+                        </div>
+                        <div class="user-info_detail">
+                            <p class="user-info_detail-text">{{ userInfo.gender }}</p>
+                            <p class="user-info_detail-text">{{ `${userInfo.age}살` }}</p>
+                            <p class="user-info_detail-text">{{ userInfo.location }}</p>
+                            <p class="user-info_detail-text">{{ userInfo.locationDetail }}</p>
                         </div>
                     </div>
+                </section>
+                <div style="height: 20%; display: flex; align-items: center; justify-content: center; column-gap: 8px;">
+                    <p style="width: 12px; height: 5px; background-color: purple; border-radius: 50px;"></p>
+                    <p style="width: 5px; height: 5px; border-radius: 50%; background-color: #ffff;"></p>
                 </div>
-                <div style="height: 20%; display: flex; align-items: center; justify-content: center;">-----</div>
             </div>
-            <div class="swiper-card" ref="swiperCard2"></div>
+            <div class="swiper-card" ref="swiperCard2">
+                <section style="width: 100%; height: 80%;"></section>
+                <div style="height: 20%; display: flex; align-items: center; justify-content: center; column-gap: 8px;">
+                    <p style="width: 5px; height: 5px; border-radius: 50%; background-color: #ffff;"></p>
+                    <p style="width: 12px; height: 5px; background-color: purple; border-radius: 50px;"></p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -33,6 +39,8 @@
 export default {
     data() {
         return {
+            userInfo: { name: '환자이름', no: 123456798, gender: '남자', age: 24, location: '3병동', locationDetail: '301호'  },
+
             isDown: false,
             startX: 0,
             scrollLeft: 0,
@@ -46,14 +54,14 @@ export default {
 <style lang="scss" scoped>
 .swiper-content-container {
     width: 100%;
-    height: 120px;
+    height: 130px;
     overflow: hidden;
+    background: #ffff;
 
     .swiper-container {
         width: 100%;
         height: 100%;
         padding: 0 40px;
-        background: lightblue;
         display: flex;
         align-items: center;
         overflow-x: auto;
@@ -73,12 +81,74 @@ export default {
             flex: 0 0 100%;
             width: calc(100% - 10px);
             height: calc(100% - 40px);
-            border-radius: 10px;
+            border-radius: 15px;
             background: rgba(66, 64, 64, 0.377);
             margin: 0 20px;
             scroll-snap-align: center;
             user-select: none;
             transition: transform 0.5s ease;
+
+            .swiper-card_top-section{
+                display: flex; 
+                align-items: center; 
+                column-gap: 10px; 
+                height: 80%; 
+                padding: 10px;
+                .patient-status-wrap{
+                    width: 15%;
+                    .patient-status{
+                        display: inline-block;
+                        text-align: center;
+                        padding: 8px 6px;
+                        background: purple;
+                        border-radius: 10px;
+                        text-align: center;
+                        font-size: 12px;
+                    }
+                }
+                .user-info-container{
+                    width: calc(100% - 15%);
+                    display: flex; 
+                    flex-direction: column;
+                    row-gap: 10px;
+
+                    .user-info{
+                        display: flex; 
+                        align-items: center; 
+                        column-gap: 10px; 
+                        color: #ffff;
+                        .user-name{
+                            font-size: 17px;
+                        }
+                        .user-no{
+                            font-size: 14px;
+                        }
+                    }
+
+
+                    .user-info_detail{
+                        display: flex; 
+                        column-gap: 25px; 
+                        align-items: center; 
+                        .user-info_detail-text{
+                            font-size: 13px; 
+                            color: #ffff;
+                            position: relative;
+                            &:not(:last-child):after{
+                                content: "";
+                                display: inline-block;
+                                width: 1px;
+                                height: 100%;
+                                background: #ffff;
+                                position: absolute;
+                                right: -13px;
+                                top: 0;
+                            }
+                        }
+                    }
+                }
+
+            }
         }
     }
 }

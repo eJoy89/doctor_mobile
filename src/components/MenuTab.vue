@@ -48,13 +48,15 @@ export default {
         column-gap: 10px;
 
         .nav-list-wrap {
+            font-size: 15px;
+            font-weight: 600;
             display: inline-block; 
             text-align: center; 
             padding: 10px;
             box-sizing: border-box;
         }
         .nav-list-wrap-active{
-            border-bottom: 2px solid purple;
+            border-bottom: 3px solid purple;
             color: purple;
         }
     }
