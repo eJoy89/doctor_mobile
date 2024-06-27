@@ -8,13 +8,15 @@
                 <angleCircleDown />
             </p>
         </ol>
-        <ol v-if="dropdownVisible" class="drop-down-ol">
-            <li v-for="(list, index) in headerLists" :key="list.name" :index="index" @click="selectHeader(list)"
-                class="drop-down-li"
-            >
-                {{ list.name }}
-            </li>
-        </ol>
+        <transition name="fade">
+            <ol v-if="dropdownVisible" class="drop-down-ol">
+                <li v-for="(list, index) in headerLists" :key="list.name" :index="index" @click="selectHeader(list)"
+                    class="drop-down-li"
+                >
+                    {{ list.name }}
+                </li>
+            </ol>
+        </transition>
     </nav>
 </template>
 
@@ -89,6 +91,13 @@ export default {
         }
     }
 
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 0.3s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+
     .drop-down-ol{
         width: 150px;
         background: rgba(40, 40, 40, 1);
@@ -102,6 +111,7 @@ export default {
         flex-direction: column;
         row-gap: 10px;
         z-index: 99999;
+
         .drop-down-li{
             padding: 5px 0;
             font-size: 15px;

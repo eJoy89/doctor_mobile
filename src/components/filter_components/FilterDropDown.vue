@@ -8,13 +8,15 @@
                 <angleSmallDown :arrowColor="'#ffffff'" />
             </p>
         </ol>
-        <ol v-if="dropdownVisible" class="drop-down-ol">
-            <li v-for="(list, index) in dropDownList" :key="list.name" :index="index" @click="selectHeader(list)"
-                class="drop-down-li"
-            >
-                {{ list.name }}
-            </li>
-        </ol>
+        <transition name="fade">
+            <ol v-if="dropdownVisible" class="drop-down-ol">
+                <li v-for="(list, index) in dropDownList" :key="list.name" :index="index" @click="selectHeader(list)"
+                    class="drop-down-li"
+                >
+                    {{ list.name }}
+                </li>
+            </ol>
+        </transition>
     </nav>
 </template>
 
@@ -98,6 +100,13 @@ export default {
             transition: .2s;
         }
     }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 0.3s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+
 
     .drop-down-ol{
         width: 100%;
