@@ -19,16 +19,22 @@
                         </div>
                     </div>
                 </section>
-                <div style="height: 20%; display: flex; align-items: center; justify-content: center; column-gap: 8px;">
-                    <p style="width: 12px; height: 5px; background-color: purple; border-radius: 50px;"></p>
-                    <p style="width: 5px; height: 5px; border-radius: 50%; background-color: #ffff;"></p>
+                <div class="swiper-navigation">
+                    <p class="active-navigation"></p>
+                    <p class="deactive-navigation"></p>
                 </div>
             </div>
             <div class="swiper-card" ref="swiperCard2">
-                <section style="width: 100%; height: 80%;"></section>
-                <div style="height: 20%; display: flex; align-items: center; justify-content: center; column-gap: 8px;">
-                    <p style="width: 5px; height: 5px; border-radius: 50%; background-color: #ffff;"></p>
-                    <p style="width: 12px; height: 5px; background-color: purple; border-radius: 50px;"></p>
+                <section class="swiper-card_top-section link-list-wrap">
+                    <router-link :to="list.link" v-for="(list, index) in navList" :key="list" :index="index" 
+                        :style="{width: `${100 / navList.length}%`}" class="nav-list"
+                    >
+                        {{ list.name }}
+                    </router-link>
+                </section>
+                <div class="swiper-navigation">
+                    <p class="deactive-navigation"></p>
+                    <p class="active-navigation"></p>
                 </div>
             </div>
         </div>
@@ -39,7 +45,20 @@
 export default {
     data() {
         return {
-            userInfo: { name: '환자이름', no: 123456798, gender: '남자', age: 24, location: '3병동', locationDetail: '301호'  },
+            userInfo: { 
+                name: '환자이름', 
+                no: 123456798, 
+                gender: '남자', 
+                age: 24, 
+                location: '3병동', 
+                locationDetail: '301호' 
+            },
+            navList: [
+                { name: '내 환자', link: 'DatailPage' },
+                { name: '상세검색', link: 'DatailPage' },
+                { name: '병동검색', link: 'DatailPage' },
+                { name: '의사검색', link: 'DatailPage' },
+            ],
 
             isDown: false,
             startX: 0,
@@ -52,6 +71,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.swiper-navigation{
+    height: 20%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    column-gap: 8px;
+    .active-navigation{
+        width: 12px; 
+        height: 5px; 
+        background-color: purple; 
+        border-radius: 50px;
+    }
+    .deactive-navigation{
+        width: 5px;
+        height: 5px; 
+        border-radius: 50%; 
+        background-color: #ffff;
+    }
+}
+
 .swiper-content-container {
     width: 100%;
     height: 130px;
@@ -61,7 +100,7 @@ export default {
     .swiper-container {
         width: 100%;
         height: 100%;
-        padding: 0 40px;
+        padding: 0 15px;
         display: flex;
         align-items: center;
         overflow-x: auto;
@@ -103,7 +142,7 @@ export default {
                         background: purple;
                         border-radius: 10px;
                         text-align: center;
-                        font-size: 12px;
+                        font-size: 14 px;
                     }
                 }
                 .user-info-container{
@@ -124,7 +163,6 @@ export default {
                             font-size: 14px;
                         }
                     }
-
 
                     .user-info_detail{
                         display: flex; 
@@ -147,7 +185,30 @@ export default {
                         }
                     }
                 }
+            }
 
+            .link-list-wrap{
+                padding: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .nav-list{
+                    text-align: center;
+                    font-size: 14px;
+                    text-decoration: none;
+                    color: #ffff;
+                    position: relative;
+                    &:not(:last-child):after{
+                        content: "";
+                        display: inline-block;
+                        width: 1px;
+                        height: 100%;
+                        background: #ffff;
+                        position: absolute;
+                        right: -13px;
+                        top: 0;
+                    }
+                }
             }
         }
     }

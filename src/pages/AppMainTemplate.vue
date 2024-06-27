@@ -23,7 +23,7 @@
 
 <script>
 import HeaderTemplate from '@/components/header_components/HeaderTemplate.vue'
-import MenuTab from '@/components/MenuTab.vue';
+import MenuTab from '@/components/tab_menu_components/MenuTab.vue';
 import SwiperComponent from '@/components/SwiperComponent.vue';
 import DocumentList from '@/components/DocumentList.vue';
 
@@ -52,7 +52,7 @@ export default {
     .app-main-container{
         position: relative;
         .main-header-section{
-            padding: 10px;
+            padding: 20px 10px;
         }
         .user-card-section{
             position: sticky;

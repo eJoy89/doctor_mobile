@@ -5,11 +5,11 @@
                 {{ selectedHeaderList.name }}
             </li>
             <p class="icon-wrap" :style="{transform: dropdownVisible ? 'rotate(-180deg)' : '' }" >
-                <angleCircleDown />
+                <angleSmallDown :arrowColor="'#ffffff'" />
             </p>
         </ol>
         <ol v-if="dropdownVisible" class="drop-down-ol">
-            <li v-for="(list, index) in headerLists" :key="list.name" :index="index" @click="selectHeader(list)"
+            <li v-for="(list, index) in dropDownList" :key="list.name" :index="index" @click="selectHeader(list)"
                 class="drop-down-li"
             >
                 {{ list.name }}
@@ -19,32 +19,37 @@
 </template>
 
 <script>
-import angleCircleDown from '@/imgs/icons/angle-circle-down.vue'
+import angleSmallDown from '@/imgs/icons/angle-small-down.vue'
+
 
 export default {
     name: 'HeaderDropDown',
     components: {
-        angleCircleDown
+        angleSmallDown
+    },
+    props: {
+        dropDownList: {
+            type: Array,
+            default() {
+                return [
+                    { name: '1병동', link: '', selected: true },
+                    { name: '2병동', link: '', selected: false },
+                    { name: '3병동', link: '', selected: false },
+                    { name: '4병동', link: '', selected: false },
+                    { name: '5병동', link: '', selected: false },
+                ]
+            }
+        }
     },
     data() {
         return {
-            headerLists: [
-                { name: '환자동의서', link: '', selected: true },
-                { name: '전자차트', link: '', selected: false },
-                { name: '처방', link: '', selected: false },
-                { name: '카덱스', link: '', selected: false },
-                { name: '임상관찰기록', link: '', selected: false },
-                { name: '환자안전관리', link: '', selected: false },
-                { name: 'QPS', link: '', selected: false },
-                { name: '이미지 업로드', link: '', selected: false },
-            ],
 
-            selectedHeaderList: { name: null, link: null, selected: null },
+            selectedHeaderList: { name: null, link: null, },
             dropdownVisible: false
         }
     },
     mounted() {
-        this.headerLists.forEach((element) => {
+        this.dropDownList.forEach((element) => {
             if(element.selected === true) {
                 this.selectedHeaderList = element;
             }
@@ -53,7 +58,7 @@ export default {
     methods: {
         selectHeader(list) {
             this.selectedHeaderList = list;
-            this.headerLists.forEach((element) => {
+            this.dropDownList.forEach((element) => {
                 element.selected = false;
             });
             list.selected = true;
@@ -68,19 +73,24 @@ export default {
 
 <style lang="scss" scoped>
 .header-nav{
-    min-width: 70%;
-    width: fit-content;
+    width: 100%;
     user-select: none;
-    padding-right: 10px;
     position: relative;
 
     .main-ol{
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         column-gap: 5px;
+        background: rgba(66, 64, 64, 0.377);
 
         .main-li{
-            font-size: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffff;
         }
         .icon-wrap{
             width: 20px; 
@@ -90,14 +100,13 @@ export default {
     }
 
     .drop-down-ol{
-        width: 150px;
-        background: rgba(40, 40, 40, 1);
+        width: 100%;
+        background: rgb(175, 170, 170);
         color: #ffff;
-        border: 1px solid gray;
         position: absolute;
         top: calc(100% + 10px);
         padding: 20px 10px;
-        border-radius: 10px;
+        border-radius: 5px;
         display: flex;
         flex-direction: column;
         row-gap: 10px;
