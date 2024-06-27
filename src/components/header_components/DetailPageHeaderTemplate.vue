@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss" scoped>
 .detail-page-header{
-    padding: 10px;
+    padding: 20px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;

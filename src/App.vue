@@ -17,15 +17,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.8s;
+    transition: opacity 0.6s;
 }
-.fade-enter, .fade-leave-to{
+.fade-enter-from, .fade-leave-to{
     opacity: 0;
-}
-nav {
-    margin-bottom: 20px;
-}
-nav a {
-    margin-right: 10px;
 }
 </style>

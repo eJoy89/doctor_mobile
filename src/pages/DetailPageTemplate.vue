@@ -1,6 +1,6 @@
 <template>
-    <main class="detail-page-main" style="position: relative;">
-        <div style="position: sticky; top: 0; z-index: 9999;" ref="fixedInfo">
+    <main class="detail-page-main">
+        <div class="fixed-wrap" ref="fixedInfo">
             <section class="detail-page_header-section">
                 <DetailPageHeaderTemplate />
             </section>
@@ -12,7 +12,7 @@
             </section>
         </div>
     
-        <section :style="{ overflow: 'scroll', position: 'absolute', width: '100%', height: `calc(${screenHeight * 100}px - ${headerSectionHeight}px)` }">
+        <section class="detail-list-section" :style="{ overflow: 'scroll', position: 'absolute', width: '100%', background: '#ffff', zIndex: '999', height: `calc(${screenHeight * 100}px - ${headerSectionHeight}px)` }">
             <DetailPageList />
         </section>
         </main>
@@ -72,6 +72,17 @@ export default {
 
 <style lang="scss" scoped>
 .detail-page-main {
-min-height: calc(var(--vh, 1vh) * 100);
+    min-height: calc(var(--vh, 1vh) * 100);
+    position: relative;
+    .fixed-wrap{
+        position: sticky; 
+        top: 0; 
+        z-index: 9999;
+    }
+    .detail-list-section{
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
 }
 </style>

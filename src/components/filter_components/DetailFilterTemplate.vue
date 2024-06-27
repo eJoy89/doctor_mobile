@@ -23,7 +23,7 @@
 
             <p class="divide-line"></p>
 
-            <div style="display: flex; align-items: center; column-gap: 5px; overflow: scroll;">
+            <div class="button-wrap" style="display: flex; align-items: center; column-gap: 5px; overflow: scroll;">
                 <button style="background-color: transparent; border: 1px solid rgba(66, 64, 64, 0.377); padding: 5px 15px; border-radius: 40px;">병동 -</button>
                 <button style="background-color: transparent; border: 1px solid rgba(66, 64, 64, 0.377); padding: 5px 15px; border-radius: 40px;">병실 -</button>
             </div>
@@ -53,6 +53,12 @@ export default {
     width: 15%;
     font-size: 13px;
     text-align: center;
+}
+// 임시
+.button-wrap{
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 .rotate-icon{
