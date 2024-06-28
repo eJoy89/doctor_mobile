@@ -16,7 +16,12 @@
             </section>
         </div>
     
-        <section class="detail-list-section" :style="{ overflow: 'scroll', position: 'absolute', width: '100%', background: '#ffff', zIndex: '999', height: `calc(${screenHeight * 100}px - ${headerSectionHeight}px)` }">
+        <section class="detail-list-section" 
+            :style="{ 
+                overflow: 'scroll', position: 'absolute', width: '100%', background: '#ffff', zIndex: '999', 
+                height: `calc(${screenHeight * 100}px - ${headerSectionHeight}px)` 
+            }"
+        >
             <DetailPageList />
         </section>
         </main>

@@ -22,6 +22,7 @@
                 <div class="list-header_bottom">
                     <p class="main-list">{{ list.no }}</p>
                     <p class="main-list">{{ list.age }}</p>
+                    <!-- <MARQUEE class="main-list" direction="left">{{ list.address }}</MARQUEE> -->
                     <p class="main-list">{{ list.address }}</p>
                 </div>
             </div>
@@ -70,7 +71,7 @@ export default {
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     .list-header_top, .list-header_bottom{
         display: flex;
-        p{
+        p, MARQUEE{
             width: calc(100% / 3);
             padding: 5px 0;
             text-align: center;
