@@ -3,7 +3,7 @@
         <ol class="detail-page_nav-wrap">
             <li v-for="(list, index) in this.detailTabList" :key="list" :index="index" 
                 :class="{['nav-li']:true, ['active-nav-li']:index === selectedTab}"
-                @click="selectTab(index)"
+                @click="selectTab(list, index)"
             >
                 {{ list.name }}
             </li>
@@ -14,20 +14,30 @@
 <script>
 export default {
     name: 'DetailTabMenu',
+    emits: [
+        'tabList'
+    ],
     data() {
         return {
             detailTabList: [
-                { name: '내 환자' },
-                { name: '상세검색' },
-                { name: '병동검색' },
-                { name: '의사검색' },
+                { name: '내 환자', index: 0 },
+                { name: '상세검색', index: 1 },
+                { name: '병동검색', index: 2 },
+                { name: '의사검색', index: 3 },
             ],
             selectedTab: 0,
         }
     },
+    mounted() {
+        this.$emit('tabList', this.detailTabList[0]);
+    },
+    unmounted() {
+        this.selectedTab = 0;
+    },
     methods: {
-        selectTab(index) {
+        selectTab(list, index) {
             this.selectedTab = index;
+            this.$emit('tabList', list);
         }
     }
 }

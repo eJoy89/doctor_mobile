@@ -5,10 +5,14 @@
                 <DetailPageHeaderTemplate />
             </section>
             <section class="detail-page_tab-menu-section">
-                <DetailTabMenu />
+                <DetailTabMenu 
+                    @tabList="tabList"
+                />
             </section>
             <section class="detail-page_filter-section">
-                <DetailFilterTemplate />
+                <DetailFilterTemplate 
+                    :filterComponentSet="this.filterComponentSet"
+                />
             </section>
         </div>
     
@@ -38,6 +42,9 @@ export default {
             screenHeight: null,
             headerSectionHeight: null,
             resizeObserver: null,
+
+            // 초기 셋팅 값
+            filterComponentSet: { name: '내 환자', index: 0 },
         };
     },
     mounted() {
@@ -66,6 +73,9 @@ export default {
             this.screenHeight = vh;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         },
+        tabList(data) {
+            this.filterComponentSet = data;
+        } 
     },
 };
 </script>

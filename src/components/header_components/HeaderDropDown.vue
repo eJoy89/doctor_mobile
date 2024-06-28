@@ -1,5 +1,5 @@
 <template>
-    <nav class="header-nav">
+    <nav class="header-nav" ref="dropDownComponent">
         <ol class="main-ol" @click="toggleDropdown">
             <li class="main-li">
                 {{ selectedHeaderList.name }}
@@ -50,12 +50,16 @@ export default {
             if(element.selected === true) {
                 this.selectedHeaderList = element;
             }
-        })
+        });
+        document.addEventListener('click', this.handleClickOutside);
+    },
+    beforeUnmount() {
+        document.addEventListener('click', this.handleClickOutside);
     },
     methods: {
         selectHeader(list) {
             this.selectedHeaderList = list;
-            this.headerLists.forEach((element) => {
+            this.headerLists.forEach((element) => { 
                 element.selected = false;
             });
             list.selected = true;
@@ -63,6 +67,12 @@ export default {
         },
         toggleDropdown() {
             this.dropdownVisible = !this.dropdownVisible;
+        },
+        handleClickOutside(event) {
+            const dropDownComponent = this.$refs.dropDownComponent;
+            if (dropDownComponent && !dropDownComponent.contains(event.target)) {
+                this.dropdownVisible = false;
+            }
         }
     }
 }
