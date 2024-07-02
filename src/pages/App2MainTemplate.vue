@@ -8,7 +8,7 @@
 
       <section class="main-section" >
         <div style="width: 100%;">
-          <TabNav></TabNav>
+          <TabNav />
         </div>
         <router-view></router-view>
       </section>
@@ -19,7 +19,7 @@
         />
       </section>
 
-      <div style="width: 100%; position: absolute; top: 0; z-index: 99999; transition: .5s;" :style="{right: this.activeSideMenu ? '0%' : '100%'}">
+      <div class="side-menu-wrap" :style="{right: this.activeSideMenu ? '0%' : '100%'}">
         <SideMenu1 
           @closeSideMenu="closeSideMenu"
         />
@@ -52,7 +52,6 @@ export default {
   mounted() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-
   },
   methods: {
     openSideMenu(data) {
@@ -85,6 +84,15 @@ export default {
       position: absolute;
       overflow: hidden;
       bottom: 0;
+    }
+
+
+    .side-menu-wrap{
+      width: 100%; 
+      position: absolute; 
+      top: 0; 
+      z-index: 99999; 
+      transition: .5s ease-out;
     }
   }
 }

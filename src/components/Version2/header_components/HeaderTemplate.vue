@@ -75,6 +75,7 @@ export default {
             let clientY = event.clientY || (event.touches && event.touches[0].clientY);
             if (clientY) {
                 let newHeight = this.startHeight + (clientY - this.startY);
+                this.checkHeight = newHeight;
                 if (newHeight < 50) newHeight = 50;
                 this.$refs.headerHeight.style.height = newHeight + 'px';
                 this.$refs.userCard.style.height = newHeight + 'px';
@@ -89,8 +90,12 @@ export default {
             document.removeEventListener('touchend', this.stopDrag);
         },
 
-        disableRefresh(event) {
-            if (event.target.closest('.tab-menu-nav') || event.target.closest('.side-menu-container') || event.target.closest('.foot-menu-nav')) {
+        disableRefresh(event) { 
+            const isInTabMenuNav = event.target.closest('.tab-menu-nav') !== null;
+            const isInSideMenuContainer = event.target.closest('.side-menu-container') !== null;
+            const isInFootMenuNav = event.target.closest('.foot-menu-nav') !== null;
+
+            if (isInTabMenuNav || isInSideMenuContainer || isInFootMenuNav) {
                 return; 
             }
             event.preventDefault();
