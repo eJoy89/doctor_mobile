@@ -12,7 +12,7 @@
                 </div>
                 <div class="" style="display: flex; align-items: center; column-gap: 5px;">
                     <p style="width: 24px; height: 24px; border-radius: 50%; background-color: red;"></p>
-                    <p style="width: 24px; height: 24px; border-radius: 50%; background-color: red;"></p>
+                    <p style="width: 24px; height: 24px; border-radius: 50%; background-color: blue;" @click="openSearching"></p>
                 </div>
             </div>
             
@@ -37,6 +37,7 @@
 <script>
 export default {
     name: 'HeaderTemplate',
+    emits: ['openSearching'],
     data() {
         return {
             isDragging: false,
@@ -58,6 +59,9 @@ export default {
         document.addEventListener('touchmove', this.disableRefresh, { passive: false });
     },
     methods: {
+        openSearching() {
+            this.$emit('openSearching', true);
+        },
         startDrag(event) {
             this.isDragging = true;
             this.startY = event.clientY || (event.touches && event.touches[0].clientY);

@@ -3,7 +3,7 @@
     <div class="searching-template-container">
       <header class="searching-template-header">
         <h2 class="header-title">환자 조회</h2>
-        <p class="searching-template-close">닫기</p>
+        <p class="searching-template-close" @click="closeSearching">닫기</p>
       </header>
       <section class="searching-section">
         <SearchingTabMenu />
@@ -25,6 +25,7 @@ import SearchingResult from '@/components/Version2/searching_components/Searchin
 
 export default {
   name: 'SearchingTemplate',
+  emits: ['closeSearching'],
   components: {
     SearchingTabMenu,
     SearchingInput,
@@ -35,6 +36,14 @@ export default {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     document.body.style.overflow = 'hidden';
   },
+  methods: {
+    closeSearching() {
+      this.$emit('closeSearching', true)
+    }
+  },
+  unmounted() {
+    document.body.style.overflow = 'unset';
+  }
 }
 </script>
 
@@ -42,11 +51,11 @@ export default {
 .searching-template-bg-wrap {
   width: 100%;
   height: calc(var(--vh, 1vh) * 100);
-  background-color: gray;
+  // background-color: gray;
   position: relative;
   .searching-template-container {
     width: 98%;
-    height: 90%;
+    height: 98%;
     border-radius: 30px 0 0 30px;
     background-color: #ffff;
     position: absolute;

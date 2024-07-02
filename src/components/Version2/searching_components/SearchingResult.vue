@@ -7,6 +7,8 @@
         </header>
 
         <section class="searching-result-section">
+
+            
         </section>
     </div>
 

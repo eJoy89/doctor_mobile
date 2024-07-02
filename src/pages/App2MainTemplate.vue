@@ -3,7 +3,9 @@
     
     <main class="app2-main">
       <section class="header-section">
-        <HeaderComponent />
+        <HeaderComponent 
+          @openSearching="openSearching"
+        />
       </section>
 
       <section class="main-section" >
@@ -24,6 +26,11 @@
           @closeSideMenu="closeSideMenu"
         />
       </div>
+      <div>
+        <SearchingTemplate class="searching-wrap" :style="{left: this.activeSearching ? '0%' : '100%', }"
+          @closeSearching="closeSearching"
+        />
+      </div>
     </main>
 
   </div>
@@ -34,6 +41,7 @@ import HeaderComponent from '@/components/Version2/header_components/HeaderTempl
 import TabNav from '@/components/Version2/nav_component/TabNav.vue';
 import FootNav from '@/components/Version2/nav_component/FootNav.vue';
 import SideMenu1 from '@/components/Version2/sideMenu1.vue';
+import SearchingTemplate from '@/components/Version2/searching_components/SearchingTemplate.vue';
 
 
 export default {
@@ -42,11 +50,13 @@ export default {
     HeaderComponent,
     TabNav,
     FootNav,
-    SideMenu1
+    SideMenu1,
+    SearchingTemplate
   },
   data() {
     return {
       activeSideMenu: false,
+      activeSearching: false,
     }
   },
   mounted() {
@@ -59,6 +69,12 @@ export default {
     },
     closeSideMenu(data) {
       this.activeSideMenu = !data;
+    },
+    openSearching(data) {
+      this.activeSearching = data;
+    },
+    closeSearching(data) {
+      this.activeSearching = !data;
     }
   }
 }
@@ -88,6 +104,14 @@ export default {
 
 
     .side-menu-wrap{
+      width: 100%; 
+      position: absolute; 
+      top: 0; 
+      z-index: 99999; 
+      transition: .5s ease-out;
+    }
+   
+    .searching-wrap{
       width: 100%; 
       position: absolute; 
       top: 0; 

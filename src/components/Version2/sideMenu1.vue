@@ -120,6 +120,7 @@ li, ol, ul {
     .user-card{
         width: 100%;
         height: 90px;
+        padding: 0 15px;
         display: flex;
         align-items: center;
         justify-content: space-between;
