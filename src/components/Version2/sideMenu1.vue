@@ -74,7 +74,7 @@ export default {
             this.userClicked = true;
             const section = this.$refs['section' + index][0];
             const listWrap = this.$refs.listWrap;
-            const offset = section.offsetTop - this.userCardHeight;
+            const offset = section.offsetTop - this.userCardHeight + 85;
             listWrap.scrollTo({ top: offset, behavior: 'smooth' });
 
             setTimeout(() => {
