@@ -5,7 +5,7 @@
                 <div style="display: flex; align-items: center; column-gap: 5px;">
                     <p style="width: 30px; height: 30px; border-radius: 50%; background: green;"></p>
                     <h2>김철수</h2>
-                    <span style="display: flex; align-items: center; column-gap: 5px;">
+                    <span style="display: flex; align-items: center; column-gap: 5px;" :style="{opacity: `${checkHeight}`}">
                         <p>00123456</p>
                         <p>23</p>
                     </span>
@@ -51,7 +51,8 @@ export default {
                     { name: '나이', info: '23' },
                     { name: '성별', info: '남' },
                 ]
-            }
+            },
+            checkHeight: 1,
 
         }
     },
@@ -79,13 +80,27 @@ export default {
             let clientY = event.clientY || (event.touches && event.touches[0].clientY);
             if (clientY) {
                 let newHeight = this.startHeight + (clientY - this.startY);
-                this.checkHeight = newHeight;
-                if (newHeight < 50) newHeight = 50;
+
+                const maxHeight = 170;
+                let percentage = ((newHeight - 50) / (maxHeight - 50)) * 100;
+
+                if (percentage > 100) {
+                    percentage = 100;
+                    newHeight = maxHeight;
+                } else if (newHeight < 50) {
+                    newHeight = 50;
+                }
+
+                this.checkHeight = newHeight >= 50;
+
+                let invertedPercentage = 1 - (percentage * 0.01);
+                this.checkHeight = invertedPercentage.toFixed(2);
+
                 this.$refs.headerHeight.style.height = newHeight + 'px';
                 this.$refs.userCard.style.height = newHeight + 'px';
             }
         },
-
+        
         stopDrag() {
             this.isDragging = false;
             document.removeEventListener('mousemove', this.drag);
