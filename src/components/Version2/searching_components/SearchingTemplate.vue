@@ -94,7 +94,7 @@ export default {
     .searching-main {
       width: 100%;
       height: calc(100% - 100px); 
-      overflow: auto;
+      // overflow: auto;
       position: relative;
 
     }

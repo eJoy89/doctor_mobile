@@ -1,51 +1,56 @@
 <template>
-    <div class="searching-result-container">
-        <div class="scroll-container">
-            <table class="searching-result-table">
-                <thead>
-                    <tr>
-                        <th v-for="(list, index) in headerList" :key="index" :class="{ 'sticky-header': true, 'sticky-name': index === 0 }" 
-                        :style="{zIndex: index === 0 ? '9999' : '999'}">
-                            {{ list.name }}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(list, rowIndex) in dummy" :key="rowIndex">
-                        <td v-for="(item, colIndex) in Object.values(list)" :key="colIndex" :class="{ 'sticky-name': colIndex === 0 }">
-                            {{ item }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="result-container">
+        <div style="width: 20%; ">
+            <div class="header">
+                성명
+            </div>
+
+            <div class="name" style="display: flex; flex-direction: column; row-gap: 15px;">
+                <div v-for="(list, index) in dummy" :key="index">
+                    {{ list.name }}
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 80%;">
+            <div class="header" ref="header">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+            <div class="content" ref="content">
+                <div v-for="(list, index) in dummy" :key="index" style="display: flex; column-gap: 20px">
+                    <p v-for="([, value], i) in Object.entries(list).filter(([key]) => key !== 'name')" :key="i">
+                        {{ value }}
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
+
 <script>
 export default {
-    name: 'SearchingResult',
-    props: {
-        headerList: {
-            type: Array,
-            default() {
-                return [
-                    { name: '성명' },
-                    { name: '등록번호' },
-                    { name: '나이' },
-                    { name: '성별' },
-                    { name: '생년월일' },
-                    { name: '병동/병실' },
-                    { name: '담당과' },
-                    { name: '담당의' },
-                    { name: '상태' }
-                ];
-            }
-        }
-    },
     data() {
         return {
             dummy: [
+                { name: '김하늘', no: '000000000000000000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                
                 { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
                 { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
                 { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
@@ -63,61 +68,53 @@ export default {
                 { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
                 { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
                 { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
-            ]
-        };
+            ],
+        }
+    },
+    mounted() {
+        this.$refs.header.addEventListener('scroll', this.syncScroll);
+        this.$refs.content.addEventListener('scroll', this.syncScroll);
+    },
+    beforeunmounted() {
+        this.$refs.header.removeEventListener('scroll', this.syncScroll);
+        this.$refs.content.removeEventListener('scroll', this.syncScroll);
+    },
+    methods: {
+        syncScroll(event) {
+            if (event.target === this.$refs.header) {
+                this.$refs.content.scrollLeft = event.target.scrollLeft;
+            } else {
+                this.$refs.header.scrollLeft = event.target.scrollLeft;
+            }
+        }
     }
-};
+}
 </script>
 
-<style scoped>
-.searching-result-container {
-    width: 100%;
-    background: gold;
-}
-
-.scroll-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.searching-result-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.searching-result-table th,
-.searching-result-table td {
-    min-width: 100px;
-    padding: 10px 15px;
-    text-align: center;
-    vertical-align: middle;
-    border: 0px solid #ccc;
-}
-
-.sticky-header {
-    position: sticky;
-    top: 0;
+<style lang="scss" scoped>
+.result-container {
+    height: 100%;
     background: lightblue;
-    z-index: 9999; 
-}
+    position: relative;
+    overflow: scroll;
+    display: flex;
+    padding: 0 10px 10px 10px;
 
-.sticky-name {
-    position: sticky;
-    left: 0;
-    background: white;
-    z-index: 99;
+    .header {
+        height: 100px;
+        background: red;
+        position: sticky;
+        top: 0;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    .content {
+        overflow-x: scroll;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+    }
 }
 </style>
