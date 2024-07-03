@@ -54,6 +54,8 @@ export default {
   // background-color: gray;
   position: relative;
   .searching-template-container {
+    border: 1px solid red;
+
     width: 98%;
     height: 98%;
     border-radius: 30px 0 0 30px;
@@ -94,7 +96,7 @@ export default {
     .searching-main {
       width: 100%;
       height: calc(100% - 100px); 
-      // overflow: auto;
+      overflow: auto;
       position: relative;
 
     }
