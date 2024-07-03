@@ -1,0 +1,141 @@
+<template>
+    <div class="searching-result-container">
+        <div class="scroll-container">
+            <header class="searching-result-header">
+                <div v-for="(list, index) in headerList" :key="index" :class="['header-list', { 'sticky-name': index === 0 }]">
+                    {{ list.name }}
+                </div>
+            </header>
+
+            <section class="searching-result-section">
+                <div v-for="(list, index) in dummy" :key="index" class="row">
+                    <p v-for="(item, i) in Object.values(list)" :key="i" :class="{ 'sticky-name': i === 0 }">
+                        {{ item }}
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'SearchingResult',
+    props: {
+        headerList: {
+            type: Array,
+            default() {
+                return [
+                    { name: '성명' },
+                    { name: '등록번호' },
+                    { name: '나이' },
+                    { name: '성별' },
+                    { name: '생년월일' },
+                    { name: '병동/병실' },
+                    { name: '담당과' },
+                    { name: '담당의' },
+                    { name: '상태' }
+                ]
+            }
+        }
+    },
+    data() {
+        return {
+            dummy: [
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+                { name: '김하늘', no: '0000000', age: '00', gender: '여', br: '0000-00-00', lc: '5병동 501호', dp: '소화기 내과', dr: '조주희', st: '재원' },
+            ]
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.searching-result-container {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    background: gold;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.scroll-container {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    // display: grid;
+    // grid-template-columns: repeat(9, minmax(100px, 1fr));
+    position: relative;
+}
+
+.searching-result-header {
+    display: flex; 
+    text-align: center;
+    white-space: nowrap;
+    background: lightblue;
+    position: sticky;
+    top: 0;
+    z-index: 2; 
+    column-gap: 10px;
+
+    .header-list {
+        min-width: 150px;
+        max-width: 150px;
+        font-size: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+.searching-result-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+.row {
+  
+    text-align: center;
+
+    position: relative;
+    display: flex; 
+    align-items: center;
+    column-gap: 10px;
+    // height: 30px;
+    white-space: nowrap;
+}
+
+.row p {
+    min-width: 150px;
+    max-width: 150px;
+    // padding: 20px 15px; 
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.sticky-name {
+    min-width: 100px;
+    max-width: 100px;
+    text-align: center;
+    position: sticky;
+    left: 0;
+    background: white; 
+    z-index: 1;
+}
+</style>

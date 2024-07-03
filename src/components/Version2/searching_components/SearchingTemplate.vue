@@ -95,7 +95,7 @@ export default {
       width: 100%;
       height: calc(100% - 100px); 
       overflow: auto;
-    
+      position: relative;
 
     }
   }

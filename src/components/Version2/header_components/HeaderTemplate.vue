@@ -5,7 +5,7 @@
                 <div style="display: flex; align-items: center; column-gap: 5px;">
                     <p style="width: 30px; height: 30px; border-radius: 50%; background: green;"></p>
                     <h2>김철수</h2>
-                    <span style="display: flex; align-items: center; column-gap: 5px;" :style="{opacity: `${checkHeight}`}">
+                    <span style="display: flex; align-items: center; column-gap: 5px;" :style="{opacity: `${checkHeight - 0.3}`}">
                         <p>00123456</p>
                         <p>23</p>
                     </span>
@@ -81,7 +81,7 @@ export default {
             if (clientY) {
                 let newHeight = this.startHeight + (clientY - this.startY);
 
-                const maxHeight = 170;
+                const maxHeight = 210;
                 let percentage = ((newHeight - 50) / (maxHeight - 50)) * 100;
 
                 if (percentage > 100) {
@@ -100,7 +100,7 @@ export default {
                 this.$refs.userCard.style.height = newHeight + 'px';
             }
         },
-        
+
         stopDrag() {
             this.isDragging = false;
             document.removeEventListener('mousemove', this.drag);
@@ -109,16 +109,19 @@ export default {
             document.removeEventListener('touchend', this.stopDrag);
         },
 
-        disableRefresh(event) { 
-            const isInTabMenuNav = event.target.closest('.tab-menu-nav') !== null;
-            const isInSideMenuContainer = event.target.closest('.side-menu-container') !== null;
-            const isInFootMenuNav = event.target.closest('.foot-menu-nav') !== null;
+        // disableRefresh(event) { 
+        //     const isInTabMenuNav = event.target.closest('.tab-menu-nav') !== null;
+        //     const isInSideMenuContainer = event.target.closest('.side-menu-container') !== null;
+        //     const isInFootMenuNav = event.target.closest('.foot-menu-nav') !== null;
+        //     const isTabNavContainer = event.target.closest('.tab-nav-container') !== null;
+        //     const isSearchingResultHeader = event.target.closest('.searching-result-header') !== null;
+        //     const isSearchingResultSection = event.target.closest('.searching-result-section') !== null;
 
-            if (isInTabMenuNav || isInSideMenuContainer || isInFootMenuNav) {
-                return; 
-            }
-            event.preventDefault();
-        }
+        //     if (isInTabMenuNav || isInSideMenuContainer || isInFootMenuNav || isTabNavContainer || isSearchingResultHeader || isSearchingResultSection) {
+        //         return; 
+        //     }
+        //     event.preventDefault();
+        // }
     },
     unmounted() {
         document.removeEventListener('touchmove', this.disableRefresh);
@@ -130,7 +133,7 @@ export default {
 .main-page-header {
     width: 100%;
     min-height: 50px;
-    max-height: 170px;
+    max-height: 210px;
     padding: 0 10px;
     position: relative;
     overflow: hidden;
