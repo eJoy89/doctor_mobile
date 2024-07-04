@@ -1,57 +1,56 @@
 <template>
-    <div :class="['simple-page', 'limited-height']">
-        <Container
-            @drop="onDrop"
-            drag-class="opacity-ghost"
-            drop-class="opacity-ghost-drop"
-        >
-            <Draggable v-for="item in items" :key="item.id" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
-                <div class="draggable-item">
-                    {{ item.data }}
-                </div>
-            </Draggable>
-        </Container>
-    </div>
+  <div :class="['simple-page', 'limited-height']">
+    <Container
+      @drop="onDrop"
+      drag-class="opacity-ghost"
+      drop-class="opacity-ghost-drop"
+      @drag-enter="onDragStart"
+      @drag-leave="onDragLeave"
+    >
+      <Draggable v-for="item in items" :key="item.id" @click="handleClick(item)">
+        <div class="draggable-item">
+          {{ item.data }}
+        </div>
+      </Draggable>
+    </Container>
+  </div>
+  <p style="color: red;">{{ isDragging }}</p>
 </template>
 
 <script>
 import { Container, Draggable } from "vue-dndrop";
-import { applyDrag, generateItems } from "@/utils/helpers.js";
+import { applyDrag } from "@/utils/helpers";
 
 export default {
   name: "DragClass",
-
   components: { Container, Draggable },
-
   data() {
     return {
-      items: generateItems(50, (i) => ({ id: i, data: "Draggable " + i })),
-      touchPosition: null,
+      items: [
+        { data: '청출어람'},
+        { data: '안하무인'},
+        { data: '우이독경'},
+        { data: '고진감래'},
+        { data: '마이동풍'},
+        { data: '풍전등화'},
+        { data: '이이제이'},
+      ],
+      test: false,
+      isDragging: false,
     };
   },
-
   methods: {
     onDrop(dropResult) {
       this.items = applyDrag(this.items, dropResult);
+      this.isDragging = !this.isDragging;
+
     },
-    onTouchStart(event) {
-      this.touchPosition = {
-        x: event.touches[0].clientX,
-        y: event.touches[0].clientY,
-      };
+    onDragStart() {
+      this.isDragging = !this.isDragging;
     },
-    onTouchMove(event) {
-      if (this.touchPosition) {
-        const touch = event.touches[0];
-        const moveX = touch.clientX - this.touchPosition.x;
-        const moveY = touch.clientY - this.touchPosition.y;
-        event.target.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      }
-    },
-    onTouchEnd(event) {
-      this.touchPosition = null;
-      event.target.style.transform = "";
-    },
+    onDragLeave() {
+
+    }
   },
 };
 </script>
@@ -61,13 +60,15 @@ export default {
   height: 60vh;
   overflow: auto;
 }
-
 .draggable-item {
-  padding: 10px;
-  margin: 5px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  cursor: grab;
-  touch-action: none; /* 터치 이벤트가 드래그로 인식되도록 설정 */
+  padding: 20px;
+  user-select: none;
+  cursor: pointer;
+}
+.opacity-ghost {
+  opacity: 0.4;
+}
+.opacity-ghost-drop {
+  opacity: 0.1;
 }
 </style>
