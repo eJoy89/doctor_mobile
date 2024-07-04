@@ -26,8 +26,13 @@
           @closeSideMenu="closeSideMenu"
         />
       </div>
-      <div>
-        <SearchingTemplate class="searching-wrap" :style="{left: this.activeSearching ? '0%' : '100%', }"
+
+      <div style="position: absolute; top: 0; background: gray; width: 100%; height: 100%; opacity: .4; transition: .3s" 
+        :style="{display: this.activeSearching ? 'flex' : 'none'}"
+      >
+      </div>
+      <div style="z-index: 99999;">
+        <SearchingTemplate class="searching-wrap" :style="{left: this.activeSearching ? '0%' : '100%' }"
           @closeSearching="closeSearching"
         />
       </div>

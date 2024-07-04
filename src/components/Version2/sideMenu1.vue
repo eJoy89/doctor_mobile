@@ -11,7 +11,7 @@
         </div>
 
         <nav class="side-nav">
-            <div style="width: 100px; height: 100%; background-color: aqua;">
+            <div style="width: 100px; height: calc(100% - 90px); display: flex; flex-direction: column; justify-content: space-between; background-color: aqua;">
                 <ul>
                     <li 
                         v-for="(list, index) in arr" 
@@ -23,6 +23,13 @@
                         {{ list.list }}
                     </li>
                 </ul>
+
+                <div style="display: flex; align-items: center; column-gap: 5px;padding: 20px;">
+                    <p style="width: 16px;">
+                        <settingsIcon />
+                    </p>
+                    <p>설정</p>
+                </div>
             </div>
 
             <div class="list-wrap" ref="listWrap" @scroll="handleScroll">
@@ -41,12 +48,15 @@
 
 <script>
 import angleSmallLeft from '@/imgs/icons/angle-small-left.vue';
+import settingsIcon from '@/imgs/icons/settings-icon.vue';
+
 
 export default {
     name: 'sideMenu1',
     emits: ['closeSideMenu'],
     components: {
-        angleSmallLeft
+        angleSmallLeft,
+        settingsIcon
     },
     data() {
         return {

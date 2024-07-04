@@ -13,8 +13,7 @@
                     </thead>
                     <tbody class="" style="overflow: scroll;height: 100%;">
                         <tr v-for="(list, rowIndex) in dummy" :key="rowIndex" >
-                            <td v-for="(item, colIndex) in Object.values(list)" :key="colIndex" :class="{ 'sticky-name': colIndex === 0 }"
-                            :style="{}">
+                            <td v-for="(item, colIndex) in Object.values(list)" :key="colIndex" :class="{ 'sticky-name': colIndex === 0 }">
                                 {{ item }}
                             </td>
                         </tr>

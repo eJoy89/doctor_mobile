@@ -1,16 +1,17 @@
 <template>
-    <div style="width: 100%; height: 100vh;">
-        <SearchingTemplate />
-    </div>
+    <MainMenu />
+    <!-- <SettingComponent /> -->
 </template>
 
 <script>
-import SearchingTemplate from '@/components/Version2/searching_components/SearchingTemplate.vue'
+import MainMenu from '@/components/Version2/setting_components/setting_menus/MainMenu.vue'
+
 
 
 export default {
     components: {
-        SearchingTemplate
+        // SettingComponent
+        MainMenu,
     }
 }
 </script>
