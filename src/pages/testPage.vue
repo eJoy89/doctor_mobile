@@ -1,17 +1,17 @@
 <template>
-    <MainMenu />
+    <PatientInfoMenu />
     <!-- <SettingComponent /> -->
 </template>
 
 <script>
-import MainMenu from '@/components/Version2/setting_components/setting_menus/MainMenu.vue'
+import PatientInfoMenu from '@/components/Version2/setting_components/setting_menus/PatientInfoMenu.vue'
 
 
 
 export default {
     components: {
         // SettingComponent
-        MainMenu,
+        PatientInfoMenu,
     }
 }
 </script>

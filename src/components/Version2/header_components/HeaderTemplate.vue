@@ -109,19 +109,19 @@ export default {
             document.removeEventListener('touchend', this.stopDrag);
         },
 
-        // disableRefresh(event) { 
-        //     const isInTabMenuNav = event.target.closest('.tab-menu-nav') !== null;
-        //     const isInSideMenuContainer = event.target.closest('.side-menu-container') !== null;
-        //     const isInFootMenuNav = event.target.closest('.foot-menu-nav') !== null;
-        //     const isTabNavContainer = event.target.closest('.tab-nav-container') !== null;
-        //     const isSearchingResultHeader = event.target.closest('.searching-result-header') !== null;
-        //     const isSearchingResultSection = event.target.closest('.searching-result-section') !== null;
+        disableRefresh(event) { 
+            const isInTabMenuNav = event.target.closest('.tab-menu-nav') !== null;
+            const isInSideMenuContainer = event.target.closest('.side-menu-container') !== null;
+            const isInFootMenuNav = event.target.closest('.foot-menu-nav') !== null;
+            const isTabNavContainer = event.target.closest('.tab-nav-container') !== null;
+            const isSearchingResultHeader = event.target.closest('.searching-result-header') !== null;
+            const isSearchingResultSection = event.target.closest('.searching-result-section') !== null;
 
-        //     if (isInTabMenuNav || isInSideMenuContainer || isInFootMenuNav || isTabNavContainer || isSearchingResultHeader || isSearchingResultSection) {
-        //         return; 
-        //     }
-        //     event.preventDefault();
-        // }
+            if (isInTabMenuNav || isInSideMenuContainer || isInFootMenuNav || isTabNavContainer || isSearchingResultHeader || isSearchingResultSection) {
+                return; 
+            }
+            event.preventDefault();
+        }
     },
     unmounted() {
         document.removeEventListener('touchmove', this.disableRefresh);
