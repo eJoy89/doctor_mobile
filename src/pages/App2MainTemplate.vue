@@ -8,11 +8,15 @@
         />
       </section>
 
-      <section class="main-section" >
+      <section class="main-section">
         <div style="width: 100%;">
           <TabNav />
         </div>
-        <router-view></router-view>
+        <div style="overflow: scroll; height: 100vh;">
+          <!-- version2로 새로운 리스트 컴포넌트 필요 ↓ -->
+          <DocumentList />
+          <!-- <router-view></router-view> -->
+        </div>
       </section>
 
       <section class="nav-section">
@@ -47,6 +51,7 @@ import TabNav from '@/components/Version2/nav_component/TabNav.vue';
 import FootNav from '@/components/Version2/nav_component/FootNav.vue';
 import SideMenu1 from '@/components/Version2/sideMenu1.vue';
 import SearchingTemplate from '@/components/Version2/searching_components/SearchingTemplate.vue';
+import DocumentList from '@/components/DocumentList.vue';
 
 
 export default {
@@ -56,7 +61,8 @@ export default {
     TabNav,
     FootNav,
     SideMenu1,
-    SearchingTemplate
+    SearchingTemplate,
+    DocumentList
   },
   data() {
     return {
